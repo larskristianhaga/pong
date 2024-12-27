@@ -1,4 +1,4 @@
-app = 'pong'
+app = 'pongapi'
 primary_region = 'arn'
 
 [build]
