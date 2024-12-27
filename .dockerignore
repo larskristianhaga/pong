@@ -1,0 +1,7 @@
+**/.idea
+
+# Default ignored files
+.idea/shelf
+.idea/workspace.xml
+
+fly.toml
