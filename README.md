@@ -18,6 +18,16 @@ curl -L 'https://pongapi.fly.dev' -H 'Accept: application/json'
 
 ## Supported response types
 
-- `text/plain`, default
+Default response type is `text/plain`.
+
 - `application/json`
 - `application/xml`
+- `text/plain`
+- `text/html`
+- `text/csv`
+- `text/yaml`
+- `text/toml`
+- `text/vcard`
+- `text/vcalendar`
+- `text/ics`
+- `text/x-sh`
