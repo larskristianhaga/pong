@@ -9,11 +9,24 @@ Basic usage:
 ```Bash
 curl -L 'https://pongapi.fly.dev'
 ```
+Will respond with:
+
+```
+pong
+```
+
+<br>
+
 
 Advanced usage with custom type response:
 
 ```Bash
 curl -L 'https://pongapi.fly.dev' -H 'Accept: application/json'
+```
+Will respond with:
+
+```json
+{"message": "pong"}
 ```
 
 ## Supported response types
