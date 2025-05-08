@@ -1,6 +1,7 @@
-FROM nginx:alpine
+FROM caddy:2-alpine
 
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY Caddyfile /etc/caddy/Caddyfile
 
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+
+CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile"]

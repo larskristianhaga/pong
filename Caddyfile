@@ -1,0 +1,108 @@
+{
+    admin off
+    auto_https off
+}
+
+pongapi.fly.dev:80 {
+    log {
+        output file /var/log/caddy/access.log
+        format json
+    }
+
+    root * /var/www/html
+    file_server
+
+    handle / {
+        @json {
+            header Accept *application/json*
+        }
+        handle @json {
+            header Content-Type application/json
+            respond `{"message": "Hello, world!", "status": "success"}` 200
+         }
+
+        @xml {
+            header Accept *application/xml*
+        }
+        handle @xml {
+            header Content-Type application/xml
+            respond "<message>pong</message>" 200
+        }
+
+        @plain {
+            header Accept *text/plain*
+        }
+        handle @plain {
+            header Content-Type text/plain
+            respond "pong" 200
+        }
+
+        @html {
+            header Accept *text/html*
+        }
+        handle @html {
+            header Content-Type text/html
+            respond "<html><body><h1>pong</h1></body></html>" 200
+        }
+
+        @csv {
+            header Accept *text/csv*
+        }
+        handle @csv {
+            header Content-Type text/csv
+            respond "pong" 200
+        }
+
+        @yaml {
+            header Accept *text/yaml*
+        }
+        handle @yaml {
+            header Content-Type text/yaml
+            respond "message: pong" 200
+        }
+
+        @toml {
+            header Accept *text/toml*
+        }
+        handle @toml {
+            header Content-Type text/toml
+            respond "message = 'pong'" 200
+        }
+
+        @vcard {
+            header Accept *text/vcard*
+        }
+        handle @vcard {
+            header Content-Type text/vcard
+            respond "BEGIN:VCARD\nVERSION:3.0\nFN:pong\nEND:VCARD" 200
+        }
+
+        @vcalendar {
+            header Accept *text/vcalendar*
+        }
+        handle @vcalendar {
+            header Content-Type text/vcalendar
+            respond "BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:pong\nEND:VEVENT\nEND:VCALENDAR" 200
+        }
+
+        @ics {
+            header Accept *text/ics*
+        }
+        handle @ics {
+            header Content-Type text/ics
+            respond "BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:pong\nEND:VEVENT\nEND:VCALENDAR" 200
+        }
+
+        @sh {
+            header Accept *text/x-sh*
+        }
+        handle @sh {
+            header Content-Type text/x-sh
+            respond "echo pong" 200
+        }
+
+        # Default response if no Accept header matches
+        header Content-Type text/plain
+        respond "pong" 200
+    }
+}
