@@ -44,3 +44,9 @@ Default response type is `text/plain`.
 - `text/vcalendar`
 - `text/ics`
 - `text/x-sh`
+
+## Running locally
+
+```bash
+docker run -it --rm -p 80:80 $(docker build -q .)
+```
